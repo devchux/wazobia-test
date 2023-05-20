@@ -1,9 +1,12 @@
 @import "./editor/index.scss";
-@import "./buttons/upload.scss";
 @import "./common/social-icon.scss";
+@import "./common/embed-image.scss";
+@import "./common/embed-video.scss";
 @import "./embeds/dropdown.scss";
 @import "./embeds/modal.scss";
-@import "./common/embed-image.scss";
-@import "./inputs/file.scss";
+@import "./buttons/upload.scss";
 @import "./buttons/button.scss";
 @import "./buttons/grouped-button.scss";
+@import "./inputs/input.scss";
+@import "./inputs/file.scss";
+@import "./inputs/select.scss";

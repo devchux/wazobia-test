@@ -1,0 +1,14 @@
+.custom-input {
+  background: #fafafa;
+  border: 0.1rem solid #e7f1e9;
+  border-radius: 0.4rem;
+  padding: 0.8rem 1.2rem;
+
+  > input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1.2rem;
+  }
+}

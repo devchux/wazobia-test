@@ -6,6 +6,7 @@ import { useState } from "react";
 import EmbedModal from "./modal";
 import EmbedImage from "../common/embed-image";
 import { EmbedState, IModalContent } from "../../constants/type";
+import EmbedVideo from "../common/embed-video";
 
 const EmbedDropdown = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -49,7 +50,7 @@ const EmbedDropdown = () => {
       onEmbed: () => null,
     },
     video: {
-      node: <EmbedImage />,
+      node: <EmbedVideo />,
       onEmbed: () => null,
     },
     social: {

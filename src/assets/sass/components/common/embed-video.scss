@@ -1,0 +1,13 @@
+.embed-video {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+  > div {
+    p {
+      letter-spacing: 0.13px;
+      color: #333333;
+      margin-bottom: 0.8rem;
+    }
+  }
+}

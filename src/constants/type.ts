@@ -1,4 +1,9 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import {
+  ButtonHTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+  SelectHTMLAttributes,
+} from "react";
 import { EditorState } from "react-draft-wysiwyg";
 
 export interface EditorStateValue {
@@ -28,3 +33,12 @@ export type IModalContent = Record<
   EmbedState,
   { node: JSX.Element; onEmbed: () => void }
 >;
+
+export interface InpputProps extends InputHTMLAttributes<HTMLInputElement> {
+  wrapperClassName?: string;
+}
+
+export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  wrapperClassName?: string;
+  options: { title: string; value: string }[];
+}
