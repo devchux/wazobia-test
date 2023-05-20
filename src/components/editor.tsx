@@ -31,6 +31,9 @@ const Editor = () => (
         options: ["link"],
         className: "custom-link-wrapper",
       },
+      image: {
+        className: "custom-image-wrapper",
+      },
     }}
   />
 );
