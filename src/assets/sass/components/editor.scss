@@ -5,6 +5,7 @@
   margin-bottom: 0;
   border: 0.1rem solid #e7f1e9;
   border-radius: 0.5rem;
+  overflow: hidden;
 
   .rdw-block-wrapper,
   .rdw-image-wrapper,
@@ -20,9 +21,16 @@
     margin: 0;
     padding: 0;
     min-width: fit-content;
+    padding: 0.5rem;
 
     &:hover {
       box-shadow: none;
+      background-color: rgba(#111111, 0.1);
+    }
+
+    &.rdw-option-active {
+      box-shadow: none;
+      background-color: rgba(#111111, 0.1);
     }
   }
 
@@ -51,8 +59,8 @@
   .custom-link-wrapper {
     > .rdw-option-wrapper {
       border: none;
-      margin: 0;
-      padding: 0 1rem 0 1.8rem;
+      padding: 0 0.5rem;
+      margin: 0 0.5rem 0 1.3rem;
 
       &:hover {
         box-shadow: none;
@@ -62,22 +70,22 @@
 
   .rdw-image-wrapper {
     > .custom-image-wrapper {
-      padding: 0 1.3rem 0 1rem;
+      padding: 0 0.5rem;
+      margin: 0 0.8rem 0 0.3rem;
     }
+  }
+
+  .custom-textalign-wrapper,
+  .rdw-inline-wrapper,
+  .custom-list-wrapper {
+    gap: 1.1rem;
+    padding: 0 0.7rem;
   }
 
   .custom-textalign-wrapper {
     border: 0.1rem solid #e7f1e9;
     border-top: none;
     border-bottom: none;
-    gap: 1.6rem;
-    padding: 0 1.2rem;
-  }
-
-  .rdw-inline-wrapper,
-  .custom-list-wrapper {
-    gap: 1.6rem;
-    padding: 0 1.2rem;
   }
 
   .rdw-inline-wrapper {

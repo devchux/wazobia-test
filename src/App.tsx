@@ -1,11 +1,14 @@
 import Editor from "./components/editor";
+import EditorProvider from "./context/editor";
 import Layout from "./layout";
 
 function App() {
   return (
-    <Layout>
-      <Editor />
-    </Layout>
+    <EditorProvider>
+      <Layout>
+        <Editor />
+      </Layout>
+    </EditorProvider>
   );
 }
 
