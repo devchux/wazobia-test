@@ -26,6 +26,7 @@ const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const onEditorStateChange = (editorState: EditorState) => {
     const count = editorState.getCurrentContent().getPlainText().length;
+    if (count > controls.max) return;
     setControls({ editorState, count });
   };
 
