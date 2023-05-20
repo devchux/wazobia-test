@@ -1,0 +1,16 @@
+.custom-button {
+  background: #0a7227;
+  color: #ffffff;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+
+  &.outlined {
+    border: 0.1rem solid #cee3d4;
+    background-color: transparent;
+    color: #343e37;
+  }
+}

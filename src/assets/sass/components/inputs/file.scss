@@ -1,0 +1,26 @@
+.file-container {
+  width: 100%;
+  background: #fafafa;
+  border: 0.1rem dashed #0a7227;
+  border-radius: 0.4rem;
+  height: 14.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  > div {
+    border: 0.1rem solid #6caa7d;
+    border-radius: 0.4rem;
+    height: 3rem;
+    width: 14.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #343E37;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+}

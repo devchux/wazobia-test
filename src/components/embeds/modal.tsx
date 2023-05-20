@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { EmbedModalProps } from "../../constants/type";
+import GroupedButton from "../buttons/grouped-button";
 
 const EmbedModal: React.FC<EmbedModalProps> = ({
   isOpen,
   toggle,
   children,
+  onEmbed,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const createElement = (element: string, className?: string): HTMLElement => {
@@ -40,6 +42,21 @@ const EmbedModal: React.FC<EmbedModalProps> = ({
             <button onClick={toggle}>&times;</button>
           </div>
           <div className="modal-content">{children}</div>
+          <div className="modal-buttons">
+            <GroupedButton
+              options={[
+                {
+                  children: "Embed",
+                  onClick: onEmbed,
+                },
+                {
+                  children: "Cancel",
+                  onClick: toggle,
+                  outlined: true,
+                },
+              ]}
+            />
+          </div>
         </div>,
         document.getElementsByClassName("embed-modal-root")[0]
       )

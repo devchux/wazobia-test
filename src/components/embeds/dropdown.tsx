@@ -4,17 +4,20 @@ import UploadButton from "../buttons/upload";
 import SocialIcon from "../common/social-icon";
 import { useState } from "react";
 import EmbedModal from "./modal";
+import EmbedImage from "../common/embed-image";
+import { EmbedState, IModalContent } from "../../constants/type";
 
 const EmbedDropdown = () => {
   const [show, setShow] = useState<boolean>(false);
   const [modalPrompt, setModalPrompt] = useState<boolean>(false);
+  const [content, setContent] = useState<EmbedState>("picture");
 
   const toggle = () => setShow(!show);
 
   const toggleModal = () => setModalPrompt(!modalPrompt);
 
-  const openEmbedModal = (type: string) => {
-    console.log(type);
+  const openEmbedModal = (type: EmbedState) => {
+    setContent(type);
     setModalPrompt(true);
     setShow(false);
   };
@@ -39,6 +42,22 @@ const EmbedDropdown = () => {
       onClick: () => openEmbedModal("social"),
     },
   ];
+
+  const modalContent: IModalContent = {
+    picture: {
+      node: <EmbedImage />,
+      onEmbed: () => null,
+    },
+    video: {
+      node: <EmbedImage />,
+      onEmbed: () => null,
+    },
+    social: {
+      node: <EmbedImage />,
+      onEmbed: () => null,
+    },
+  };
+
   return (
     <div className="embed-dropdown-wrapper">
       <UploadButton onClick={toggle} />
@@ -64,8 +83,12 @@ const EmbedDropdown = () => {
           ))}
         </div>
       </div>
-      <EmbedModal isOpen={modalPrompt} toggle={toggleModal}>
-        Lol
+      <EmbedModal
+        isOpen={modalPrompt}
+        toggle={toggleModal}
+        onEmbed={modalContent[content].onEmbed}
+      >
+        {modalContent[content].node}
       </EmbedModal>
     </div>
   );

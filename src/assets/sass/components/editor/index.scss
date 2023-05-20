@@ -22,6 +22,11 @@
     min-width: fit-content;
     padding: 0.5rem;
 
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
     &:hover {
       box-shadow: none;
       background-color: rgba(#111111, 0.1);
