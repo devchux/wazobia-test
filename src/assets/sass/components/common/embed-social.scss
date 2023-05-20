@@ -1,0 +1,11 @@
+.embed-social {
+  > .disable-caption {
+    display: flex;
+    justify-content: space-between;
+
+    > p {
+      font-size: 1.2rem;
+      color: #343E37;
+    }
+  }
+}
