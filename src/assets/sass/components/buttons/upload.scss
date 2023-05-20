@@ -1,0 +1,27 @@
+.upload-button {
+  width: 3.2rem;
+  height: 3.2rem;
+  background: #e7f1e9;
+  border: none;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  > div {
+    transform: translateY(-50%);
+
+    > div {
+      width: 1rem;
+      height: 0.2rem;
+      background-color: #212121;
+      border-radius: 0.5rem;
+
+      &:first-child {
+        transform: rotate(90deg) translateX(25%);
+      }
+    }
+  }
+}
