@@ -3,30 +3,40 @@ import { AiFillPicture } from "react-icons/ai";
 import UploadButton from "../buttons/upload";
 import SocialIcon from "../common/social-icon";
 import { useState } from "react";
+import EmbedModal from "./modal";
 
 const EmbedDropdown = () => {
   const [show, setShow] = useState<boolean>(false);
+  const [modalPrompt, setModalPrompt] = useState<boolean>(false);
 
   const toggle = () => setShow(!show);
+
+  const toggleModal = () => setModalPrompt(!modalPrompt);
+
+  const openEmbedModal = (type: string) => {
+    console.log(type);
+    setModalPrompt(true);
+    setShow(false);
+  };
 
   const dropdownOptions = [
     {
       title: "Picture",
       subtitle: "Jpeg, png",
       icon: <AiFillPicture />,
-      onClick: () => null,
+      onClick: () => openEmbedModal("picture"),
     },
     {
       title: "Video",
       subtitle: "Embed a YouTube video",
       icon: <IoVideocam />,
-      onClick: () => null,
+      onClick: () => openEmbedModal("video"),
     },
     {
       title: "Social",
       subtitle: "Embed a Facebook link",
       icon: <SocialIcon />,
-      onClick: () => null,
+      onClick: () => openEmbedModal("social"),
     },
   ];
   return (
@@ -54,6 +64,9 @@ const EmbedDropdown = () => {
           ))}
         </div>
       </div>
+      <EmbedModal isOpen={modalPrompt} toggle={toggleModal}>
+        Lol
+      </EmbedModal>
     </div>
   );
 };
