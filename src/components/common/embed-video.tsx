@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import Input from "../inputs/input";
 import Select from "../inputs/select";
+import { EditorContext } from "../../context/editor";
 
 const EmbedVideo = () => {
+    const { video, handleVideoChange } = useContext(EditorContext)
+
   return (
     <div className="embed-video">
       <div>
@@ -10,7 +14,7 @@ const EmbedVideo = () => {
       </div>
       <div>
         <p>URL</p>
-        <Input type="url" />
+        <Input type="url" onChange={handleVideoChange} value={video} />
       </div>
     </div>
   );
