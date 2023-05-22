@@ -12,6 +12,25 @@ export interface EditorStateValue {
   max: number;
 }
 
+export interface ISocials {
+  url: string;
+  code: string;
+}
+
+export interface IEditorContext {
+  controls: EditorStateValue;
+  fileName: string;
+  video: string;
+  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleVideoChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSocialChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEditorStateChange: (editorState: EditorState) => void;
+  onEmbedImage: () => void;
+  onEmbedVideo: () => void;
+  onEmbedSocials: () => void;
+  socials: ISocials;
+}
+
 export interface EmbedModalProps {
   isOpen: boolean;
   toggle: () => void;

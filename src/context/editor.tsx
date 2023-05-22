@@ -9,7 +9,7 @@ import {
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import htmlToDraft from "html-to-draftjs";
 import draftToHtml from "draftjs-to-html";
-import { EditorStateValue } from "../constants/type";
+import { EditorStateValue, IEditorContext, ISocials } from "../constants/type";
 import { useFile } from "../hooks/useFile";
 
 const initialState: EditorStateValue = {
@@ -18,29 +18,28 @@ const initialState: EditorStateValue = {
   max: 1000,
 };
 
-export const EditorContext = createContext({
+const initialSocials = {
+  url: "",
+  code: "",
+};
+
+export const EditorContext = createContext<IEditorContext>({
   controls: initialState,
   fileName: "",
   video: "",
-  handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
-  },
-  handleVideoChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
-  },
-  onEditorStateChange: (editorState: EditorState) => {
-    console.log(editorState);
-  },
-  onEmbedImage: () => {
-    console.log("");
-  },
-  onEmbedVideo: () => {
-    console.log("");
-  },
+  handleImageChange: () => null,
+  handleVideoChange: () => null,
+  onEditorStateChange: () => null,
+  onEmbedImage: () => null,
+  onEmbedVideo: () => null,
+  handleSocialChange: () => null,
+  socials: initialSocials,
+  onEmbedSocials: () => null,
 });
 
 const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [video, setVideo] = useState("");
+  const [socials, setSocials] = useState<ISocials>(initialSocials);
   const [controls, setControls] = useReducer(
     (prev: EditorStateValue, next: Partial<EditorStateValue>) => ({
       ...prev,
@@ -55,6 +54,15 @@ const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => {
     setVideo(value);
+  };
+
+  const handleSocialChange = ({
+    target: { value, name },
+  }: ChangeEvent<HTMLInputElement>) => {
+    setSocials({
+      ...socials,
+      [name]: value,
+    });
   };
 
   const onEditorStateChange = (editorState: EditorState) => {
@@ -84,7 +92,7 @@ const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const onEmbedImage = () => {
     if (!filePreview) return;
 
-    const image = `<img src="${filePreview}" alt="${fileName}" />`;
+    const image = `<img src="${filePreview}" alt="${fileName}" width="100%" height="202" />`;
     getHTML(image);
   };
 
@@ -92,6 +100,13 @@ const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
     if (!video) return;
 
     const frame = `<iframe width="100%" height="202" src="${video}"></iframe>`;
+    getHTML(frame);
+  };
+
+  const onEmbedSocials = () => {
+    if (!socials.code) return;
+
+    const frame = `<a href="${socials.url}" target="_blank">${socials.code}</a>`;
     getHTML(frame);
   };
 
@@ -106,6 +121,9 @@ const EditorProvider: FC<{ children: ReactNode }> = ({ children }) => {
         handleVideoChange,
         video,
         onEmbedVideo,
+        handleSocialChange,
+        socials,
+        onEmbedSocials,
       }}
     >
       {children}

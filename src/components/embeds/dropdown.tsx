@@ -14,7 +14,7 @@ const EmbedDropdown = () => {
   const [show, setShow] = useState<boolean>(false);
   const [modalPrompt, setModalPrompt] = useState<boolean>(false);
   const [content, setContent] = useState<EmbedState>("picture");
-  const { onEmbedImage, onEmbedVideo } = useContext(EditorContext);
+  const { onEmbedImage, onEmbedVideo, onEmbedSocials } = useContext(EditorContext);
 
   const toggle = () => setShow(!show);
 
@@ -58,7 +58,7 @@ const EmbedDropdown = () => {
     },
     social: {
       node: <EmbedSocial />,
-      onEmbed: () => null,
+      onEmbed: onEmbedSocials,
     },
   };
 

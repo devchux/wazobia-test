@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import Toggle from "../buttons/toggle";
 import Input from "../inputs/input";
 import Select from "../inputs/select";
+import { EditorContext } from "../../context/editor";
 
 const EmbedSocial = () => {
+  const { handleSocialChange, socials } = useContext(EditorContext);
   return (
     <div className="embed-video embed-social">
       <div>
@@ -11,11 +14,21 @@ const EmbedSocial = () => {
       </div>
       <div>
         <p>URL</p>
-        <Input type="url" />
+        <Input
+          type="url"
+          name="url"
+          value={socials.url}
+          onChange={handleSocialChange}
+        />
       </div>
       <div>
         <p>CODE</p>
-        <Input type="code" />
+        <Input
+          type="text"
+          name="code"
+          value={socials.code}
+          onChange={handleSocialChange}
+        />
       </div>
       <div className="disable-caption">
         <p>Disable caption</p>
