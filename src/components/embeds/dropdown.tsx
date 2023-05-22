@@ -2,17 +2,19 @@ import { IoVideocam } from "react-icons/io5";
 import { AiFillPicture } from "react-icons/ai";
 import UploadButton from "../buttons/upload";
 import SocialIcon from "../common/social-icon";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import EmbedModal from "./modal";
 import EmbedImage from "../common/embed-image";
 import { EmbedState, IModalContent } from "../../constants/type";
 import EmbedVideo from "../common/embed-video";
 import EmbedSocial from "../common/embed-social";
+import { EditorContext } from "../../context/editor";
 
 const EmbedDropdown = () => {
   const [show, setShow] = useState<boolean>(false);
   const [modalPrompt, setModalPrompt] = useState<boolean>(false);
   const [content, setContent] = useState<EmbedState>("picture");
+  const { onEmbedImage } = useContext(EditorContext);
 
   const toggle = () => setShow(!show);
 
@@ -48,7 +50,7 @@ const EmbedDropdown = () => {
   const modalContent: IModalContent = {
     picture: {
       node: <EmbedImage />,
-      onEmbed: () => null,
+      onEmbed: onEmbedImage,
     },
     video: {
       node: <EmbedVideo />,
